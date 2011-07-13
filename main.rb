@@ -5,7 +5,8 @@ require 'json'
 
 get '/' do
   allowed_hosts = ENV["ALLOWED_HOSTS"].split(",") rescue []
-  return 403 unless allowed_hosts.include?(request.env["HTTP_REFERER"]) || Sinatra::Application.environment.to_s == 'development'
+  matches = request.env["HTTP_REFERER"].match(/http(?:s)?:\/\/(.*?)\/(.*?)/) rescue []
+  return 403 unless allowed_hosts.include?(matches[1]) || Sinatra::Application.environment.to_s == 'development'
 
   content_type :json
   @info = {
