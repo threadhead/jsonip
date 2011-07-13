@@ -14,6 +14,8 @@ GEM
     rspec-expectations (2.4.0)
       diff-lcs (~> 1.1.2)
     rspec-mocks (2.4.0)
+    shotgun (0.9)
+      rack (>= 1.0)
     sinatra (1.2.1)
       rack (~> 1.1)
       tilt (>= 1.2.2, < 2.0)
@@ -26,4 +28,5 @@ DEPENDENCIES
   awesome_print
   rack-test
   rspec (= 2.4.0)
+  shotgun
   sinatra
