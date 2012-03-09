@@ -3,6 +3,11 @@ require "bundler/setup"
 require 'sinatra'
 require 'json'
 
+configure :production do
+  require 'newrelic_rpm'
+end
+
+
 get '/' do
   @allowed_hosts = ENV["ALLOWED_HOSTS"].split(",") rescue []
   @referer = request.env["HTTP_REFERER"].match(/http(?:s)?:\/\/(.*?)\/(.*?)/) rescue []
